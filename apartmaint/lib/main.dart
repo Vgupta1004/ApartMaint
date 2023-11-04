@@ -33,7 +33,10 @@ import 'package:apartmaint/repository/authentication_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  if (Firebase.apps.length == 0) {
+    await Firebase.initializeApp(
+        name: 'ApartMaint', options: DefaultFirebaseOptions.currentPlatform);
+  }
 
   Get.put(
       AuthenticationRepository()); // Initialize AuthenticationRepository first
@@ -42,6 +45,19 @@ void main() async {
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
+    theme: ThemeData.from(
+        colorScheme: ColorScheme(
+            brightness: Brightness.light,
+            primary: Color.fromARGB(255, 44, 220, 32),
+            onPrimary: Colors.white,
+            secondary: Color.fromARGB(255, 158, 232, 152),
+            onSecondary: Colors.white,
+            error: Color.fromARGB(255, 251, 118, 118),
+            onError: Colors.red,
+            background: Colors.white,
+            onBackground: Color.fromARGB(255, 44, 220, 32),
+            surface: Color.fromARGB(255, 44, 220, 32),
+            onSurface: Colors.white)),
     /*routes: {
       '/': (context) => SplashPage(goToPage: '/welcome', duration: 3),
       '/welcome': (context) => WelcomePage()
