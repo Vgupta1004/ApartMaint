@@ -1,33 +1,33 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Pages/register.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Apartment Complex Registration',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Apartment Complex Registration'),
-        ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/apartment_complex_registration');
-            },
-            child: Text('Register'),
-          ),
-        ),
-      ),
-      routes: {
-        '/apartment_complex_registration': (context) => Register(),
-      },
-    );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Firebase.apps.length == 0) {
+    await Firebase.initializeApp(
+        name: 'ApartMaint', options: DefaultFirebaseOptions.currentPlatform);
   }
+
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    initialRoute: '/',
+    theme: ThemeData.from(
+        colorScheme: ColorScheme(
+            brightness: Brightness.light,
+            primary: Color.fromARGB(255, 44, 220, 32),
+            onPrimary: Colors.white,
+            secondary: Color.fromARGB(255, 158, 232, 152),
+            onSecondary: Colors.white,
+            error: Color.fromARGB(255, 251, 118, 118),
+            onError: Colors.red,
+            background: Colors.white,
+            onBackground: Color.fromARGB(255, 44, 220, 32),
+            surface: Color.fromARGB(255, 44, 220, 32),
+            onSurface: Colors.white)),
+    routes: {
+      '/': (context) => RegisterPage(),
+    },
+  ));
 }
