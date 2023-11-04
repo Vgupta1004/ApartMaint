@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1015442848346",
+    "firebase_url": "https://apartmaint-95d1f-default-rtdb.firebaseio.com",
+    "project_id": "apartmaint-95d1f",
+    "storage_bucket": "apartmaint-95d1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015442848346:android:a442c5fed78fcc93063663",
+        "android_client_info": {
+          "package_name": "com.example.apartmaint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmDe76vclV1Qod-Eyj_8zas8EtxaUGpsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
