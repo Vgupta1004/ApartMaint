@@ -6,7 +6,19 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register!'),
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: Icon(
+                  Icons.home,
+                  size: 30, // Increase the size to 30
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: Center(
         child: Column(

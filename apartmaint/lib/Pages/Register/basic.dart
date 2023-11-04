@@ -13,6 +13,8 @@ class _MyInfoState extends State<MyInfo> {
   final _infoKey = GlobalKey<FormState>();
   String _name = '';
   String _address = '';
+  String _state = '';
+  String _city = '';
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +60,30 @@ class _MyInfoState extends State<MyInfo> {
                         _address = value!;
                       },
                     ),
+                    TextFormField(
+                      decoration: const InputDecoration(labelText: 'State'),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter the State';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _state = value!;
+                      },
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(labelText: 'City'),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter the City';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _city = value!;
+                      },
+                    ),
                     ElevatedButton(
                       onPressed: () async {
                         if (_infoKey.currentState!.validate()) {
@@ -67,6 +93,8 @@ class _MyInfoState extends State<MyInfo> {
                           final apartName = ref.child('$_name/');
                           apartName.set({
                             "Address": _address,
+                            "State": _state,
+                            "City": _city,
                           });
 
                           Navigator.push(
